@@ -1,23 +1,41 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, useState } from "react";
 
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
 const Home = lazy(() => import("./pages/Home"));
 
 const Groups = lazy(() => import("./pages/Groups"));
-const Chat = lazy(() => import("./pages/chat"));
+const Chat = lazy(() => import("./pages/Chat"));
 const Login = lazy(() => import("./pages/Login"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+let user = true;
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/chat/:chatId" element={<Chat />} />
-        <Route path="/groups" element={<Groups/>} />
-        <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedRoute user={user} />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/chat/:chatId" element={<Chat />} />
+          <Route path="/groups" element={<Groups />} />
+        </Route>
+
+        <Route
+          path="/login"
+          element={
+            <ProtectedRoute user={!user} redirect="/">
+              <Login />
+            </ProtectedRoute>
+          }
+        ></Route>
+
+
+
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
   );
