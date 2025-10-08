@@ -14,11 +14,18 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 
+import NewGroup from "../specific/NewGroup";
+import Notifications from "../specific/Notifications";
+import Search from "../specific/Search";
+import { lazy } from "react";
 import { orange } from "../../constants/color";
 import { useNavigate } from "react-router-dom";
 
+const SearchDialog = lazy(() => import("../specific/Search"));
+const NotificationsDialog = lazy(() => import("../specific/Notifications"));
+const NewGroupDialog = lazy(() => import("../specific/NewGroup"));
 function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
@@ -28,15 +35,18 @@ function Header() {
   const navigate = useNavigate();
 
   const handleMobile = () => {
-    setIsMobile(!isMobile)
+    setIsMobile(!isMobile);
   };
 
   const openSearchDialog = () => {
-    setIsSearch(prev =>!prev)
+    setIsSearch((prev) => !prev);
   };
-
+ 
+  const openNotifications = ()=>{
+    setIsNotification((prev)=>!prev)
+  }
   const openNewGroup = () => {
-    setIsNewGroup(prev =>!prev)
+    setIsNewGroup((prev) => !prev);
   };
 
   const navigateToGroup = () => {
@@ -89,7 +99,7 @@ function Header() {
               <IconBtn
                 title={"Notfications"}
                 icon={<NotificationsIcon />}
-                onClick={logoutHandler}
+                onClick={openNotifications}
               />
 
               <IconBtn
@@ -101,6 +111,27 @@ function Header() {
           </Toolbar>
         </AppBar>
       </Box>
+
+      {isSearch && <Search /> && (
+        <Suspense fallback={<div>Loading..</div>}>
+          {" "}
+          <SearchDialog />
+        </Suspense>
+      )}
+
+      {isNotification && (
+        <Suspense fallback={<div>Loading..</div>}>
+          {" "}
+          <NotificationsDialog />
+        </Suspense>
+      )}
+
+      {isNewGroup && (
+        <Suspense fallback={<div>Loading..</div>}>
+          {" "}
+          <NewGroupDialog />
+        </Suspense>
+      )}
     </>
   );
 }
