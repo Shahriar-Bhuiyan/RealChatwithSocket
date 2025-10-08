@@ -1,6 +1,9 @@
 import {
   Add as AddIcon,
+  Group as GroupIcon,
+  Logout as LogoutIcon,
   Menu as MenuIcon,
+  Notifications as NotificationsIcon,
   Search as SearchIcon,
 } from "@mui/icons-material";
 import {
@@ -11,24 +14,39 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import React, { useState } from "react";
 
-import React from "react";
 import { orange } from "../../constants/color";
-
-const handleMobile = () => {
-  console.log("Hello Mobile");
-};
-
-const openSearchDialog = () => {
-  console.log("Hello Searching for your name");
-};
-
-const openNewGroup = () => {
-  console.log("Hello Open new group");
-};
-
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+  const [isNewGroup, setIsNewGroup] = useState(false);
+  const [isNotification, setIsNotification] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleMobile = () => {
+    setIsMobile(!isMobile)
+  };
+
+  const openSearchDialog = () => {
+    setIsSearch(prev =>!prev)
+  };
+
+  const openNewGroup = () => {
+    setIsNewGroup(prev =>!prev)
+  };
+
+  const navigateToGroup = () => {
+    navigate("/groups");
+  };
+
+  const logoutHandler = () => {
+    console.log("out ");
+  };
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }} height={"4rem"}>
@@ -50,19 +68,35 @@ function Header() {
             <Box sx={{ flexGrow: 1 }} />
 
             <Box>
-              <IconButton
-                color="inherit"
-                size="large"
+              <IconBtn
+                title={"Search"}
+                icon={<SearchIcon />}
                 onClick={openSearchDialog}
-              >
-                <SearchIcon />
-              </IconButton>
+              />
 
-              <Tooltip title="new Group">
-                <IconButton color="inherit" size="large" onClick={openNewGroup}>
-                  <AddIcon />
-                </IconButton>
-              </Tooltip>
+              <IconBtn
+                title={"new Group"}
+                icon={<AddIcon />}
+                onClick={openNewGroup}
+              />
+
+              <IconBtn
+                title={"Manage Group"}
+                icon={<GroupIcon />}
+                onClick={navigateToGroup}
+              />
+
+              <IconBtn
+                title={"Notfications"}
+                icon={<NotificationsIcon />}
+                onClick={logoutHandler}
+              />
+
+              <IconBtn
+                title={"Logout"}
+                icon={<LogoutIcon />}
+                onClick={logoutHandler}
+              />
             </Box>
           </Toolbar>
         </AppBar>
@@ -70,5 +104,15 @@ function Header() {
     </>
   );
 }
+
+const IconBtn = ({ title, icon, onClick }) => {
+  return (
+    <Tooltip title={title}>
+      <IconButton color="inherit" size="large" onClick={onClick}>
+        {icon}
+      </IconButton>
+    </Tooltip>
+  );
+};
 
 export default Header;
