@@ -17,7 +17,7 @@ export const LayoutLoaders = () => {
         sx={{ display: { xs: "none", sm: "block" } }}
         height={"100%"}
       >
-        <Skeleton variant="rectangular" height={"10vh"} />
+        <Skeleton variant="rectangular" height={"100vh"} />
       </Grid>
       <Grid item xs={12} sm={8} md={5} lg={6} height={"100%"}>
         <Stack spacing={"1rem"}>
