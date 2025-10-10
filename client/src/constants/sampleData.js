@@ -10,7 +10,7 @@ export const Samplechats = [
     avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
     name: "Shahriar Bhuiyan",
     _id: "2",
-    groupChat: false,
+    groupChat: true,
     members: ["1", "2"],
   },
 ];

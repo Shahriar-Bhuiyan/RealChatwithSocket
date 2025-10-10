@@ -1,6 +1,7 @@
 import ChatList from "../specific/Chatlist";
 import { Grid } from "@mui/material";
 import Header from "./Header";
+import Profile from "../specific/Profile";
 import React from "react";
 import SEO from "../shared/SEO";
 import { Samplechats } from "../../constants/sampleData";
@@ -44,10 +45,14 @@ const AppLayout = (WrapperComponent) => {
             sx={{
               display: { xs: "none", md: "block" },
               bgcolor: "rgba(0,0,0,0.4)",
+              display: "flex",
             }}
             height={"100%"}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
           >
-            THird
+            <Profile />
           </Grid>
         </Grid>
       </>
