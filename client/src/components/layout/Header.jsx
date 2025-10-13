@@ -113,7 +113,7 @@ function Header() {
         </AppBar>
       </Box>
 
-      {isSearch && <Search /> && (
+      {isSearch  && (
         <Suspense fallback={<Backdrop open />}>
           {" "}
           <SearchDialog />
