@@ -8,10 +8,6 @@ import viteLogo from "/vite.svg";
 
 // import { LayoutLoaders } from "./components/layout/Loaders";
 
-
-
-
-
 const Home = lazy(() => import("./pages/Home"));
 
 const Groups = lazy(() => import("./pages/Groups"));
