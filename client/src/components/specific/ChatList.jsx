@@ -3,7 +3,7 @@ import React from "react";
 import { Stack } from "@mui/material";
 
 const ChatList = ({
-  w = "100%",
+  w,
   chats = [],
   chatId,
   onlineUsers = [],

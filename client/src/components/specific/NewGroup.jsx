@@ -16,13 +16,16 @@ import { useInputValidation } from "6pp";
 
 const NewGroup = () => {
 
-  const [user,setUser] = useState(SampleUser)
-  const [members,setMembers] = useState([])
+
+  const [members,setMembers] = useState(SampleUser)
   const [selectedMember,setSelectedMembers] = useState([])
   
   const groupName = useInputValidation('')
 
   const SelectMemberHandler = (id)=>{
+
+    
+    
 
     setSelectedMembers(prev=> prev.includes(id)? prev.filter((current)=>current!==id):[...prev,id])
 
@@ -40,7 +43,7 @@ const NewGroup = () => {
         <Typography variant="body1">Members</Typography>
 
         <Stack>
-          {user.map((user, index) => (
+          {members.map((user, index) => (
             <UserItem
               key={index}
               user={user}

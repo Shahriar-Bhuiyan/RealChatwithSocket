@@ -22,10 +22,8 @@ const AppLayout = (WrapperComponent) => {
         <Header />
         <Grid container height="calc(100vh - 4rem)" direction={"column"}>
           <Grid
-            item
-            xs={4}
-            md={3}
             sx={{ display: { xs: "none", sm: "block" } }}
+            size={{ xs: 4, md: 2 ,lg:2}}
             height={"100%"}
           >
             <ChatList
@@ -34,14 +32,11 @@ const AppLayout = (WrapperComponent) => {
               handleDeleteChat={handleDeleteChat}
             />
           </Grid>
-          <Grid item xs={12} sm={8} md={5} lg={6} height={"100%"}>
+          <Grid item height={"100%"} size={{ xs: 12, sm: 3, md: 5, lg: 7 }}>
             <WrapperComponent {...props} />
           </Grid>
           <Grid
-            item
-            xs={4}
-            md={4}
-            lg={3}
+            size={{ xs: 4, md: 4, lg: 3 }}
             sx={{
               display: { xs: "none", md: "block" },
               bgcolor: "rgba(0,0,0,0.4)",
