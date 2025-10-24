@@ -23,7 +23,7 @@ const AppLayout = (WrapperComponent) => {
         <Grid container height="calc(100vh - 4rem)" direction={"column"}>
           <Grid
             sx={{ display: { xs: "none", sm: "block" } }}
-            size={{ xs: 4, md: 2 ,lg:2}}
+            size={{ xs: 4, md: 2, lg: 2 }}
             height={"100%"}
           >
             <ChatList

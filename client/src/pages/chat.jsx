@@ -10,9 +10,9 @@ import { SampleMessage } from "../constants/sampleData";
 import { orange } from "../constants/color";
 
 const user = {
-_id:"1212",
-name:'Abir Bhai'  
-}
+  _id: "1212",
+  name: "Abir Bhai",
+};
 
 function Chat() {
   const containerRef = useRef(null);
@@ -32,8 +32,8 @@ function Chat() {
           overflowY: "auto",
         }}
       >
-        {SampleMessage.map((i,k)=>(
-          <MessageComponent key={k} message={i} user={user}/>
+        {SampleMessage.map((i, k) => (
+          <MessageComponent key={k} message={i} user={user} />
         ))}
       </Stack>
 
@@ -71,9 +71,9 @@ function Chat() {
         </Stack>
       </form>
 
-      <FileMenu  />
+      <FileMenu />
     </Fragment>
   );
 }
 
-export default AppLayout(Chat);
+export default AppLayout()(Chat);

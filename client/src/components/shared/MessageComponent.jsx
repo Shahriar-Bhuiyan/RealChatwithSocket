@@ -9,7 +9,7 @@ import moment from "moment";
 const MessageComponent = ({ user, message }) => {
   const { sender, content, attachments = [], createAt } = message;
 
-  console.log(attachments)
+  console.log(attachments);
   const sameSender = sender?._id === user?._id;
   const timeago = moment(createAt).fromNow();
   return (
@@ -41,12 +41,9 @@ const MessageComponent = ({ user, message }) => {
 
           return (
             <Box key={index}>
-              <a
-                href={url}
-                target="_blank"
-                download
-                style={{ color: "black" }}
-              >{<RenderAttachment file={file} url={url}/>}</a>
+              <a href={url} target="_blank" download style={{ color: "black" }}>
+                {<RenderAttachment file={file} url={url} />}
+              </a>
             </Box>
           );
         })}
