@@ -1,5 +1,3 @@
-import chat from "../pages/chat";
-
 export const Samplechats = [
   {
     avatar: ["https://www.w3schools.com/howto/img_avatar.png"],

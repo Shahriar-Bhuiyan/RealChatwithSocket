@@ -13,6 +13,7 @@ const Groups = lazy(() => import("./pages/Groups"));
 
 const Login = lazy(() => import("./pages/Login"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Chat = lazy(()=>import('./pages/Chat'))
 
 let user = true;
 
